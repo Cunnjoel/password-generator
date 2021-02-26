@@ -11,26 +11,25 @@ function getPasswordOptions() {
   var inclUpp = confirm("Do you want to include uppercase characters?");
   var inclNum = confirm("Do you want to include numbers?");
   var inclSpe = confirm("Do you want to include special characters?");
+  return;
 }
-getPasswordOptions()
   // Variable to store length of password from user input
-  var passLength = console.log(getPasswordOptions.passwordLength);
+  var length = console.log(getPasswordOptions.passwordLength);
 
   // Conditional statement to check if password length is a number. Prompts end if this evaluates false
-  if (isNaN(passLength) === Number) {
+  if (isNaN(length) === Number) {
     alert('Password length must be provided as a number');
-  }
+  } else
 
   // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
-  if (passLength > 8){
+  if (length > 8){
     alert("Password length must be at least 8 characters long.");
-    getPasswordOptions();
-  }
+  } 
 
   // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
-   else if (passLength < 128){
-  alert("Password length cannot be longer than 128 characters long.")
-}
+     else if (length < 128);{
+  alert("Password length cannot be longer than 128 characters long.");
+} 
 
   // Variable to store boolean regarding the inclusion of special characters
   var specialCharactersConfirm = console.log(getPasswordOptions.inclSpe);
@@ -51,11 +50,12 @@ getPasswordOptions()
 
   // Object to store user input variables
   var passwordOptions = {
-    length: passLength,
+    chara: length,
     specialCharacters: getPasswordOptions.inclSpe,
     numeric: getPasswordOptions.inclNum,
     lowerCase: getPasswordOptions.inclLow,
     upperCase: getPasswordOptions.inclUpp
+    
   }
 
   // Return the options object as the exported value of this function
@@ -83,6 +83,7 @@ function generatePassword() {
 
   // Array to contain one of each type of chosen character to ensure each will be used
   var guaranteedCharacters = [];
+  console.log(guaranteedCharacters)
 
   // Conditional statement that adds array of special characters into array of possible characters based on user input
   // Push new random special character to guaranteedCharacters to make at least one of the value is always included 
@@ -113,7 +114,7 @@ function generatePassword() {
   }
 
   // For loop to iterate over the password length provided from the options object, selecting random indices from the array of possible characters and concatenating those characters into the result variable
-  for (let i = 0; i < length.length; i++) {
+    for (let i = 0; i < chara.length; i++) {
     var possibleCharacter = getRandomElement(possibleCharacters);
   }
 
@@ -123,7 +124,7 @@ function generatePassword() {
       guaranteedCharacters.push(result[randomPicker])
 }
 }
-console.log(guaranteedCharacters)
+
   // Join the array to make it a singular string to return 
 
 // Get references to the #generate element
