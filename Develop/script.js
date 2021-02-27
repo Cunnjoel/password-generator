@@ -11,25 +11,16 @@ function getPasswordOptions() {
   var inclUpp = confirm("Do you want to include uppercase characters?");
   var inclNum = confirm("Do you want to include numbers?");
   var inclSpe = confirm("Do you want to include special characters?");
-  return;
-}
-  // Variable to store length of password from user input
+  return {
+    passwordLength,
+     inclLow,
+     inclUpp,
+     inclNum,
+    inclSpe
+    }
+
+     // Variable to store length of password from user input
   var length = console.log(getPasswordOptions.passwordLength);
-
-  // Conditional statement to check if password length is a number. Prompts end if this evaluates false
-  if (isNaN(length) === Number) {
-    alert('Password length must be provided as a number');
-  } else
-
-  // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
-  if (length > 8){
-    alert("Password length must be at least 8 characters long.");
-  } 
-
-  // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
-     else if (length < 128);{
-  alert("Password length cannot be longer than 128 characters long.");
-} 
 
   // Variable to store boolean regarding the inclusion of special characters
   var specialCharactersConfirm = console.log(getPasswordOptions.inclSpe);
@@ -47,10 +38,13 @@ function getPasswordOptions() {
   if (!specialCharactersConfirm && !numericCharactersConfirm && !lowerCasedCharactersConfirm && !upperCasedCharactersConfirm) {
     alert("Must select at least one character type");
   }
+}
+
+ 
 
   // Object to store user input variables
   var passwordOptions = {
-    chara: length,
+    length: length,
     specialCharacters: getPasswordOptions.inclSpe,
     numeric: getPasswordOptions.inclNum,
     lowerCase: getPasswordOptions.inclLow,
@@ -74,15 +68,27 @@ function generatePassword() {
   // Running the function to trigger the prompts and get the users answers back as an object
   var options = getPasswordOptions();
   console.log(options)
-  // Array to store password as it's being concatenated 
-  var result = [];
-  console.log(result)
+
+    // Conditional statement to check if password length is a number. Prompts end if this evaluates false
+    if (isNaN(length) === Number) {
+      alert('Password length must be provided as a number');
+    }
+  
+    // Conditional statement to check if password length is at least 8 characters long. Prompts end if this evaluates false
+        if (length < 8) {
+      alert("Password length must be at least 8 characters long.");
+    } 
+  
+    // Conditional statement to check if password length is less than 128 characters long. Prompts end if this evaluates false
+       if (length > 128) {
+    alert("Password length cannot be longer than 128 characters long.");
+  } 
   
   // Array to store types of characters to include in password
   var possibleCharacters = [];
 
   // Array to contain one of each type of chosen character to ensure each will be used
-  var guaranteedCharacters = [];
+  var guaranteedCharacters = [possibleCharacters];
   console.log(guaranteedCharacters)
 
   // Conditional statement that adds array of special characters into array of possible characters based on user input
@@ -114,17 +120,16 @@ function generatePassword() {
   }
 
   // For loop to iterate over the password length provided from the options object, selecting random indices from the array of possible characters and concatenating those characters into the result variable
-    for (let i = 0; i < chara.length; i++) {
+    for (let i = 0; i < length.length; i++) {
     var possibleCharacter = getRandomElement(possibleCharacters);
   }
 
   // For loop to iterate the guarenteed characters to overwrite the generated characters
    for (let i = 0; i < options.length; ++i) {
-      var randomPicker = Math.floor(Math.random() * Math.floor(result.length))
-      guaranteedCharacters.push(result[randomPicker])
+      var randomPicker = Math.floor(Math.random() * Math.floor(password.length))
+      password.push(guaranteedCharacters[randomPicker])
 }
 }
-
   // Join the array to make it a singular string to return 
 
 // Get references to the #generate element
@@ -138,6 +143,10 @@ function writePassword() {
   var passwordText = document.querySelector('#password');
   // Makes the value of the element the string generated from the generatePassword function
   passwordText.value = password;
+
+    // Array to store password as it's being concatenated 
+    var password = [];
+    console.log(password)
 }
 
 // Add event listener to generate button
