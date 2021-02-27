@@ -106,7 +106,7 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandomElement(arr) {
   // Get a random number based on the length of the array parameter
-  var randIndex = Math.floor(Math.random * arr.length);
+  var randIndex = Math.floor(Math.random() * arr.length);
   // Use the random number made to get an element out of the array
   var randElement = arr[randIndex];
   // Return the element
@@ -155,9 +155,10 @@ function generatePassword() {
   }
   console.log(possibleCharacters);
   // // For loop to iterate over the password length provided from the options object, selecting random indices from the array of possible characters and concatenating those characters into the result variable
-  for (let i = 0; i < length.length; i++) {
+  for (let i = 0; i < options.passwordLength; i++) {
     var possibleCharacter = getRandomElement(possibleCharacters);
     console.log(possibleCharacter);
+    result.push(possibleCharacter)
   }
 
   // // For loop to iterate the guarenteed characters to overwrite the generated characters
@@ -167,6 +168,7 @@ function generatePassword() {
   // }
   console.log(result, password);
   return result.join('');
+  
 }
 // Join the array to make it a singular string to return
 
