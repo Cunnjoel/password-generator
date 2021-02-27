@@ -4,3 +4,4 @@ Given html and css files wrote javascript code to make a functioning random pass
 Used information from class activities, internet searches and questions to TA to write code.
 
 <img src="./assets/screenshot.png" alt=screenshot></img> 
+
